@@ -3,7 +3,7 @@
 
         <div class="col-md-5 look-img-wrapper">
             <a routerLink="/look/detail">
-                <img src="assets/look.jpg" class="look-img" />
+                <img [src]="imageLookPath" class="look-img" />
                 <div *ngIf="moreChoiceButtonEnabled" class="look-more-choice">
                     PLUS DE CHOIX
                 </div>

@@ -15,12 +15,17 @@ const httpOptions = {
 export class LookService {
 
   private lookUrl = environment.api.concat('/look');
-  private addAction = '/add'
+  private addAction = '/add';
+  private getAction = '/get';
 
   constructor(private http: HttpClient) {}
 
   addLook(addLookRequest: AddLookRequest): Observable<Look> {
     return this.http.post<Look>(this.lookUrl.concat(this.addAction), addLookRequest, httpOptions);
+  }
+
+  getLooks() : Observable<Array<Look>> {
+    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAction), httpOptions);
   }
 
 } 

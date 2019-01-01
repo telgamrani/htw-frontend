@@ -6,6 +6,7 @@ import { CoreModule } from './modules/core/core.module';
 import { LookListModule } from './modules/look-list/look-list.module';
 import { LookDetailModule } from './modules/look-detail/look-detail.module';
 import { RoutingModule } from './modules/routing/routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { RoutingModule } from './modules/routing/routing.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RoutingModule,
     CoreModule,
     LookListModule,

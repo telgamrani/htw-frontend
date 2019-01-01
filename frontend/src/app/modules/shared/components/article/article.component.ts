@@ -17,8 +17,8 @@ export class ArticleComponent implements OnInit, OnChanges {
   imageArticlePath: SafeResourceUrl;
 
   constructor(
-    private sanitizer: DomSanitizer,
-    private priceUtil: PriceUtilService
+    private _sanitizer: DomSanitizer, 
+    private _priceUtil: PriceUtilService
     ) { }
 
   ngOnInit() {
@@ -38,7 +38,7 @@ export class ArticleComponent implements OnInit, OnChanges {
   }
 
   private _initPriceWholeAndDecimalPart() {
-    const priceWholeAndDecimalPart = this.priceUtil.getWholeAndDecimalPart(this.article.price);
+    const priceWholeAndDecimalPart = this._priceUtil.getWholeAndDecimalPart(this.article.price);
     this.priceWholePart = priceWholeAndDecimalPart.wholePart;
     this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
   }
@@ -46,11 +46,11 @@ export class ArticleComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
 
     if (changes['article'] && changes['article'].currentValue) {
-      const priceWholeAndDecimalPart = this.priceUtil.getWholeAndDecimalPart(changes['article'].currentValue.price);
+      const priceWholeAndDecimalPart = this._priceUtil.getWholeAndDecimalPart(changes['article'].currentValue.price);
       this.priceWholePart = priceWholeAndDecimalPart.wholePart;
       this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
       if(this.article.imgString) {
-        this.imageArticlePath = this.sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
+        this.imageArticlePath = this._sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
       }
     }
   }

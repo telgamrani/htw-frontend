@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LookService } from 'src/app/modules/shared/services/look.service';
+import { Look } from 'src/app/modules/shared/types/look.model';
 
 @Component({
   selector: 'app-htw-look-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LookListComponent implements OnInit {
 
-  constructor() { }
+  looks: Array<Look>;
+
+  constructor(private lookService: LookService) { }
 
   ngOnInit() {
+    this.lookService.getLooks().subscribe(
+      response => this.looks = response
+    );
   }
 
 }

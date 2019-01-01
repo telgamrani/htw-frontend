@@ -1,10 +1,6 @@
-<div class="look-list">
-    <app-htw-look></app-htw-look>
-    <hr>
-    <app-htw-look></app-htw-look>
-    <hr>
-    <app-htw-look></app-htw-look>
-    <hr>
-    <app-htw-look></app-htw-look>
-    <hr>
+<div class="look-list" *ngIf="looks">
+    <ng-container *ngFor="let look of looks">
+        <app-htw-look [look]="look"></app-htw-look>
+        <hr>
+    </ng-container>
 </div>
