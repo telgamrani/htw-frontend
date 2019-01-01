@@ -8,10 +8,12 @@
     <app-htw-sub-header></app-htw-sub-header>
 
     <div class="content-wrapper">
+
         <!--<app-htw-look-list></app-htw-look-list>-->
-        <app-htw-look></app-htw-look>
-        <p class="title-center" >
-            <span>PLUS DE CHOIX</span>
-        </p>
+
+        <!--<app-htw-look-detail></app-htw-look-detail>-->
+
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+
     </div>
 </div>

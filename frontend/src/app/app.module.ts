@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import { LookListModule } from './modules/look-list/look-list.module';
 import { LookDetailModule } from './modules/look-detail/look-detail.module';
-import { SharedModule } from './modules/shared/shared.module';
+import { RoutingModule } from './modules/routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +13,10 @@ import { SharedModule } from './modules/shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    RoutingModule,
     CoreModule,
     LookListModule,
-    LookDetailModule,
-    SharedModule
+    LookDetailModule
   ],
   providers: [],
   bootstrap: [AppComponent]

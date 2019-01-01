@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-htw-look',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LookComponent implements OnInit {
 
+  @Input() moreChoiceButtonEnabled = true;
+ 
   constructor() { }
 
   ngOnInit() {
