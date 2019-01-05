@@ -10,12 +10,34 @@ import { Look } from 'src/app/modules/shared/types/look.model';
 export class LookListComponent implements OnInit {
 
   looks: Array<Look>;
+  page = 0;
+  showLoadingIndicatorSpinner = false; 
 
   constructor(private lookService: LookService) { }
 
   ngOnInit() {
-    this.lookService.getLooks().subscribe(
-      response => this.looks = response
+    this.lookService.getLooksByPage(this.page).subscribe(
+      (response) => this.looks = response,
+      (error) => {},
+      () => {
+        this.showLoadingIndicatorSpinner = false;
+      }
+    );
+  }
+
+  onScroll(){
+    this.page++;
+    this.showLoadingIndicatorSpinner = true;
+    this.lookService.getLooksByPage(this.page).subscribe(
+      (response) => {
+        if(response && Array.isArray(response) && response.length ) {
+          this.looks = this.looks.concat(response);
+        }
+      },
+      (error) => {},
+      () => {
+        this.showLoadingIndicatorSpinner = false;
+      }
     );
   }
 

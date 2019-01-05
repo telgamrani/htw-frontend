@@ -2,19 +2,28 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Article } from '../../types/article.model';
 import { PriceUtilService } from '../../utils/price-util.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-htw-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent implements OnInit, OnChanges {
+export class ArticleComponent implements OnInit {
 
   @Input() article: Article;
 
   priceWholePart: string;
   priceDecimalPart: string;
-  imageArticlePath: SafeResourceUrl;
+
+  get imageArticlePath() {
+
+    if(!this.article) {
+      return;
+    }
+    
+    return this._sanitizer.bypassSecurityTrustUrl(environment.imageArticleRootPath.concat(this.article.imgUrl));
+  }
 
   constructor(
     private _sanitizer: DomSanitizer, 
@@ -43,16 +52,16 @@ export class ArticleComponent implements OnInit, OnChanges {
     this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  // ngOnChanges(changes: SimpleChanges) {
 
-    if (changes['article'] && changes['article'].currentValue) {
-      const priceWholeAndDecimalPart = this._priceUtil.getWholeAndDecimalPart(changes['article'].currentValue.price);
-      this.priceWholePart = priceWholeAndDecimalPart.wholePart;
-      this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
-      if(this.article.imgString) {
-        this.imageArticlePath = this._sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
-      }
-    }
-  }
+  //   if (changes['article'] && changes['article'].currentValue) {
+  //     const priceWholeAndDecimalPart = this._priceUtil.getWholeAndDecimalPart(changes['article'].currentValue.price);
+  //     this.priceWholePart = priceWholeAndDecimalPart.wholePart;
+  //     this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
+  //     if(this.article.imgString) {
+  //       this.imageArticlePath = this._sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
+  //     }
+  //   }
+  // }
 
 }

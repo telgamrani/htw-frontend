@@ -4,9 +4,10 @@ import { LookComponent } from './components/look/look.component';
 import { ArticleComponent } from './components/article/article.component';
 import { RoutingModule } from '../routing/routing.module';
 import { TitleCenterComponent } from './components/title-center/title-center.component';
+import { LoaderIndicatorSpinnerComponent } from './components/loader-indicator-spinner/loader-indicator-spinner.component';
 
 @NgModule({
-  declarations: [LookComponent, ArticleComponent, TitleCenterComponent],
+  declarations: [LookComponent, ArticleComponent, TitleCenterComponent, LoaderIndicatorSpinnerComponent],
   imports: [
     CommonModule,
     RoutingModule
@@ -14,7 +15,8 @@ import { TitleCenterComponent } from './components/title-center/title-center.com
   exports: [
     LookComponent,
     ArticleComponent,
-    TitleCenterComponent
+    TitleCenterComponent,
+    LoaderIndicatorSpinnerComponent
   ]
 })
 export class SharedModule { }

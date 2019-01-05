@@ -14,33 +14,21 @@
 
             <div class="row article-img-row">
 
-                <div class="col-md">
-                  <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
+                <ng-container *ngFor="let in of counter(3); let i = index">
+                    <div class="col-md">
+                    <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(i + 1, lookArticleAssociationType.Principal)" ></app-htw-article>
+                    </div>
+                </ng-container>
 
             </div>
             
             <div class="row article-img-row">
 
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
-
-                <div class="col-md">
-                    <app-htw-article></app-htw-article>
-                </div>
+                <ng-container *ngFor="let in of counter(3); let i = index">
+                    <div class="col-md">
+                        <app-htw-article [article]="getArticleByRankAndLookArticleAssociationType(i + 4, lookArticleAssociationType.Principal)" ></app-htw-article>
+                    </div>
+                </ng-container>                
 
             </div>
         </div>

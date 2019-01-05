@@ -17,6 +17,7 @@ export class LookService {
   private lookUrl = environment.api.concat('/look');
   private addAction = '/add';
   private getAction = '/get';
+  private size = 8;
 
   constructor(private http: HttpClient) {}
 
@@ -26,6 +27,10 @@ export class LookService {
 
   getLooks() : Observable<Array<Look>> {
     return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAction), httpOptions);
+  }
+
+  getLooksByPage(page:number) : Observable<Array<Look>> {
+    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAction+"/"+page+"/"+this.size), httpOptions);
   }
 
 } 

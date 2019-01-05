@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   api: 'http://localhost:8080',
-  imageLookRootPath: 'http://localhost:8887/images/looks/'
+  imageLookRootPath: 'http://localhost:8887/images/looks/',
+  imageArticleRootPath: 'http://localhost:8887/images/articles/'
 };
 
 /*
