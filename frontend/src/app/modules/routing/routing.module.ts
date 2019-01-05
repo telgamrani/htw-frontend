@@ -6,7 +6,7 @@ import { LookDetailComponent } from '../look-detail/components/look-detail/look-
 const routes: Routes = [
   { path: '', redirectTo: 'look/list', pathMatch: 'full' },
   { path: 'look/list', component: LookListComponent },
-  { path: 'look/detail', component: LookDetailComponent },
+  { path: 'look/detail/:id', component: LookDetailComponent },
   { path: '**', component: LookListComponent }
 ];
 

@@ -1,7 +1,12 @@
 <div class="article-wrapper">
-    <a href="#">
+
+    <a [href]="article.shoppingUrl" target="_blank">
         <div class="article-img-wrapper">
-            <img width="90%" height="100%" *ngIf="imageArticlePath" [src]="imageArticlePath"/>
+            <img width="90%" height="100%" *ngIf="imageArticlePath" [src]="imageArticlePath" />
+            
+            <div class="article-more-choice">
+                    VOIR SUR {{article.shoppingSiteName | uppercase}}
+            </div>
         </div>
         <div class="article-infos">
             <div class="row article-infos-row-1">
@@ -15,4 +20,4 @@
             </div>
         </div>
     </a>
-  </div>
+</div>

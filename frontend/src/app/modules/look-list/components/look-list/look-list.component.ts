@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LookService } from 'src/app/modules/shared/services/look.service';
 import { Look } from 'src/app/modules/shared/types/look.model';
+import { LookService } from 'src/app/modules/core/services/look.service';
 
 @Component({
   selector: 'app-htw-look-list',
@@ -9,15 +9,18 @@ import { Look } from 'src/app/modules/shared/types/look.model';
 })
 export class LookListComponent implements OnInit {
 
-  looks: Array<Look>;
   page = 0;
   showLoadingIndicatorSpinner = false; 
+
+  get looks(): Array<Look> {
+    return this.lookService.looksStorage
+  }
 
   constructor(private lookService: LookService) { }
 
   ngOnInit() {
     this.lookService.getLooksByPage(this.page).subscribe(
-      (response) => this.looks = response,
+      (response) => this.lookService.looksStorage = response,
       (error) => {},
       () => {
         this.showLoadingIndicatorSpinner = false;
@@ -31,7 +34,7 @@ export class LookListComponent implements OnInit {
     this.lookService.getLooksByPage(this.page).subscribe(
       (response) => {
         if(response && Array.isArray(response) && response.length ) {
-          this.looks = this.looks.concat(response);
+          this.lookService.looksStorage = this.lookService.looksStorage.concat(response);
         }
       },
       (error) => {},

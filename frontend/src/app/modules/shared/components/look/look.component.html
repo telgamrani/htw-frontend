@@ -1,13 +1,18 @@
 <div class="look">
     <div class="row">
-
-        <div class="col-md-5 look-img-wrapper">
-            <a routerLink="/look/detail">
-                <img [src]="imageLookPath" class="look-img" />
-                <div *ngIf="moreChoiceButtonEnabled" class="look-more-choice">
-                    PLUS DE CHOIX
-                </div>
-            </a>
+        
+        <div class="col-md-5 look-img-wrapper" >
+            <ng-container *ngIf="moreChoiceButtonEnabled; else moreChoiceButtonDisabled">
+                <a [routerLink]="['/look/detail', look.id]">
+                    <img [src]="imageLookPath" class="look-img" />
+                    <div class="look-more-choice">
+                        PLUS DE CHOIX
+                    </div>
+                </a>
+            </ng-container>
+            <ng-template #moreChoiceButtonDisabled>
+                    <img [src]="imageLookPath" class="look-img" />
+            </ng-template>
         </div>
 
         <div class="col-md">
