@@ -10,7 +10,7 @@ import { LookService } from 'src/app/modules/core/services/look.service';
 export class LookListComponent implements OnInit {
 
   page = 0;
-  showLoadingIndicatorSpinner = false; 
+  showLoadingIndicatorSpinner = true; 
 
   get looks(): Array<Look> {
     return this.lookService.looksStorage

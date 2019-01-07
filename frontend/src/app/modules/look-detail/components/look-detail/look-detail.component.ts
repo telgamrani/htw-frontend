@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LookService } from 'src/app/modules/core/services/look.service';
 import { Look } from 'src/app/modules/shared/types/look.model';
 import { LookArticleAssociationType } from 'src/app/modules/shared/enums/look-article-association-type.enum';
@@ -13,11 +13,15 @@ import { Article } from 'src/app/modules/shared/types/article.model';
 export class LookDetailComponent implements OnInit {
 
   look: Look;
+
   public lookArticleAssociationType = LookArticleAssociationType;
+
+  showLoadingIndicatorSpinner = true; 
 
   constructor(
     private lookService: LookService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,7 +33,11 @@ export class LookDetailComponent implements OnInit {
           this.look = response;
         }
       },
-      error => {}
+      error => {
+        this.router.navigate(['/look/list']);
+      },
+    ).finally(
+      () => this.showLoadingIndicatorSpinner = false
     )
   }
 
