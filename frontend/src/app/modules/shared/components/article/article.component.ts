@@ -18,7 +18,9 @@ export class ArticleComponent implements OnInit {
 
   get imageArticlePath() {
 
-    if(!this.article || (this.article && !this.article.imgUrl)) {
+    if(!this.article 
+      || (this.article && !this.article.imgUrl)
+      || (this.article && this.article.imgUrl && this.article.imgUrl.includes('null'))) {
       return;
     }
     

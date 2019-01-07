@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AddLookRequest } from '../../shared/requests/add-look-request.request';
 import { Observable } from 'rxjs';
 import { Look } from '../../shared/types/look.model';
-import { reject } from 'q';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,22 +17,18 @@ export class LookService {
   looksStorage: Array<Look>;
 
   private lookUrl = environment.api.concat('/look');
-  private addAction = '/add';
   private getAction = '/get';
+  private getAllPublishedAction = '/getAllPublished';
   private size = 8;
 
   constructor(private http: HttpClient) {}
 
-  addLook(addLookRequest: AddLookRequest): Observable<Look> {
-    return this.http.post<Look>(this.lookUrl.concat(this.addAction), addLookRequest, httpOptions);
-  }
-
   getLooks() : Observable<Array<Look>> {
-    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAction), httpOptions);
+    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAllPublishedAction), httpOptions);
   }
 
   getLooksByPage(page:number) : Observable<Array<Look>> {
-    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAction+"/"+page+"/"+this.size), httpOptions);
+    return this.http.get<Array<Look>>(this.lookUrl.concat(this.getAllPublishedAction+"/"+page+"/"+this.size), httpOptions);
   }
 
   getLookById(id: number): Observable<Look> {

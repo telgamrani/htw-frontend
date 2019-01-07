@@ -59,6 +59,7 @@ span.article-infos-price-whole-part {
 div.article-more-choice {
     display: none;
     background-color: rgb(237, 168, 32);
+    color: #000;
     text-transform: uppercase;
     font-weight: 700;
     width: 100%;
