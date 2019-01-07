@@ -1,0 +1,23 @@
+div.col-md {
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+div.footer-wrapper {
+    padding: 25px 0px;
+    color: rgba(255, 255, 255, 0.70);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+div.col-md i.fa, div.col-md > span {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+@media (max-width: 600px) {
+
+    div.footer-wrapper {
+        font-size: 0.7rem;
+    }
+}
