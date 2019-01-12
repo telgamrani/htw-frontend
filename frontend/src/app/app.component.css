@@ -9,7 +9,7 @@ div.header {
 
 div.content-wrapper {
     padding-bottom: 10px;
-    min-height: 300px;
+    min-height: 500px;
 }
 @media (min-width: 900px) {
     div.content-wrapper {
