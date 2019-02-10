@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Article } from '../../types/article.model';
 import { PriceUtilService } from '../../utils/price-util.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,19 +16,18 @@ export class ArticleComponent implements OnInit {
   priceWholePart: string;
   priceDecimalPart: string;
 
-  get imageArticlePath() {
+  // get imageArticlePath() {
 
-    if(!this.article 
-      || (this.article && !this.article.imgUrl)
-      || (this.article && this.article.imgUrl && this.article.imgUrl.includes('null'))) {
-      return;
-    }
+  //   if(!this.article 
+  //     || (this.article && !this.article.imgUrl)
+  //     || (this.article && this.article.imgUrl && this.article.imgUrl.includes('null'))) {
+  //     return;
+  //   }
     
-    return this._sanitizer.bypassSecurityTrustUrl(environment.imageArticleRootPath.concat(this.article.imgUrl));
-  }
+  //   return this._sanitizer.bypassSecurityTrustUrl(environment.imageArticleRootPath.concat(this.article.imgUrl));
+  // }
 
   constructor(
-    private _sanitizer: DomSanitizer, 
     private _priceUtil: PriceUtilService
     ) { }
 
@@ -38,6 +37,8 @@ export class ArticleComponent implements OnInit {
     } else {
       this._initPriceWholeAndDecimalPart();
     }
+    console.log(this.article);
+    
   }
 
   private _initArticle() {

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AddLookRequest } from '../../shared/requests/add-look-request.request';
 import { Observable } from 'rxjs';
 import { Look } from '../../shared/types/look.model';
 
@@ -18,7 +17,7 @@ export class LookService {
 
   private lookUrl = environment.api.concat('/look');
   private getAction = '/get';
-  private getAllPublishedAction = '/getAllPublished';
+  private getAllPublishedAction = '/get/all/published';
   private size = 8;
 
   constructor(private http: HttpClient) {}
