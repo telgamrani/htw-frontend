@@ -16,37 +16,12 @@ export class ArticleComponent implements OnInit {
   priceWholePart: string;
   priceDecimalPart: string;
 
-  // get imageArticlePath() {
-
-  //   if(!this.article 
-  //     || (this.article && !this.article.imgUrl)
-  //     || (this.article && this.article.imgUrl && this.article.imgUrl.includes('null'))) {
-  //     return;
-  //   }
-    
-  //   return this._sanitizer.bypassSecurityTrustUrl(environment.imageArticleRootPath.concat(this.article.imgUrl));
-  // }
-
-  constructor(
-    private _priceUtil: PriceUtilService
-    ) { }
+  constructor(private _priceUtil: PriceUtilService) { }
 
   ngOnInit() {
-    if(!this.article) {
-      this._initArticle();
-    } else {
+    if(this.article) {
       this._initPriceWholeAndDecimalPart();
     }
-    console.log(this.article);
-    
-  }
-
-  private _initArticle() {
-    this.article = new Article();
-    this.article.brand = '_Brand brand_';
-    this.priceWholePart = '_00';
-    this.priceDecimalPart = '00_';
-    this.article.description = '_Description - description_';
   }
 
   private _initPriceWholeAndDecimalPart() {
@@ -54,17 +29,5 @@ export class ArticleComponent implements OnInit {
     this.priceWholePart = priceWholeAndDecimalPart.wholePart;
     this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-
-  //   if (changes['article'] && changes['article'].currentValue) {
-  //     const priceWholeAndDecimalPart = this._priceUtil.getWholeAndDecimalPart(changes['article'].currentValue.price);
-  //     this.priceWholePart = priceWholeAndDecimalPart.wholePart;
-  //     this.priceDecimalPart = priceWholeAndDecimalPart.decimalPart;
-  //     if(this.article.imgString) {
-  //       this.imageArticlePath = this._sanitizer.bypassSecurityTrustUrl(this.article.imgString.toString());
-  //     }
-  //   }
-  // }
 
 }
