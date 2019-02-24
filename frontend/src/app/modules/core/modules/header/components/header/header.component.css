@@ -1,6 +1,5 @@
 @media (min-width: 900px) {
     .header {
-        /*border: 5px solid black;*/
         margin: 0% 10%;
     }
 
@@ -9,10 +8,6 @@
     }
 }
 @media (max-width: 900px) {
-    .header {
-        /*border: 5px solid yellow;*/
-    }
-
     div.header-top {
         display: none;
     }
@@ -20,6 +15,7 @@
 
 .header {
     user-select: none;
+    color: #fff;
 }
 
 i.fa {
@@ -48,14 +44,14 @@ div.header-right-elements div.fa-icon {
 }
 
 div.fa-icon:hover {
-    /*border: 1px solid red;*/
     opacity: 0.8;
     background-color: rgba(0, 0, 0, 0.1)
 }
 
 div.header-logo {
     text-align: center;
-    padding-top: 7px;
+    margin-top: 18px;
+    font-size: 1.2rem;
 }
 
 div.header-middle > div.col {
@@ -67,31 +63,17 @@ div.header-middle > div.col a > img {
     height: 25px;
 }
 
+span.logo-second-part-color {
+    color: rgb(237, 168, 32);
+}
+
 div.header-right-elements > a > div.fa-icon {
     float: right;
 }
 
-
-div.header-top {
-    /*background-color: brown;*/
-    /*border: 1px solid white;*/
-}
-div.header-top div.col {
-    /*border: 1px solid red;*/
-}
-
-div.header-middle {
-    /*background-color: yellowgreen;*/
-}
-
 div.header-bottom  {
-    /*background-color: sienna;*/
     padding: 10px 0px;
     text-align: center;
-}
-
-div.header-bottom div.col {
-    /*border-right: 1px solid rgb(237,168,32); */
 }
 
 div.header-bottom i.fa {
