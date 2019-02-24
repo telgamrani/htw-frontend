@@ -10,7 +10,7 @@ export class Article {
 	
     imgUrl: string;
 
-    imgString: string | ArrayBuffer ;
+    images: Array<string>;
     
     brand: string;
 
